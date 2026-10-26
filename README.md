@@ -16,6 +16,7 @@ A free, lightweight web app (PWA) with the 2026 waste collection calendar for th
   - day before: 7:00, 13:00 or 19:00
   - on collection day: 6:00, 7:00 or 10:00
 - A guide to what belongs in each bin and what does not
+- A separate **Collection yard (Zberný dvor)** tab: live open/closed status, opening hours (Wednesday 13:00–18:00, Saturday 9:00–16:30), location with navigation and call buttons, what to bring, and what is and is not accepted. The tabs show a short status badge (next collection and its waste type, and whether the yard is open)
 - Light and dark theme: automatic (follows your phone) or chosen manually
 - Installable as an app on your home screen, works offline
 - Interface in Slovak
@@ -59,6 +60,10 @@ Any static host works (Netlify, GitHub Pages, Cloudflare Pages). On Netlify you 
 ## Updating the dates
 
 Collection dates are defined in the `D` object at the top of the main script in `index.html`. Keys are `K` (mixed waste), `S` (glass), `P` (paper) and `L` (plastics and metals), each mapping month numbers to lists of days. The Friday option for mixed waste is derived by shifting the Thursday dates by one day. When KOSIT publishes the next year's calendar, update these lists and the year in the page title and calendar.
+
+## Updating the collection yard data
+
+Opening hours are the `ZH` object in the main script (keys are weekday numbers, 0 = Sunday, values are `[opens, closes]` in minutes after midnight). The address, phone number, fees and the lists of accepted and rejected waste are plain text in the `v-zd` section of `index.html`. Source: the operating rules of the Čaňa collection yard published by the municipality: https://www.obeccana.eu/samosprava/odpadove-hospodarstvo/zberny-dvor-1/. Public holidays are not specified in the rules, so the app does not account for them.
 
 ## Contributing
 
