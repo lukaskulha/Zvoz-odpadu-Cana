@@ -135,4 +135,9 @@ setTheme(document.documentElement.dataset.theme||"auto",false);
 setK(kdv);renderNext();render();drawOpts();sched();
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)refresh()});
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+<script>
+/* Analytika: rozlíšenie nového a vracajúceho sa návštevníka (GoatCounter udalosť) */
+(function(){var back=false;try{back=!!localStorage.getItem("zvoz_seen");localStorage.setItem("zvoz_seen","1")}catch(e){}
+var n=0;(function send(){if(window.goatcounter&&window.goatcounter.count){window.goatcounter.count({path:back?"vracajuci-sa":"novy",title:back?"Vracajúci sa návštevník":"Nový návštevník",event:true})}else if(n++<20){setTimeout(send,500)}})()})();
 </script></body></html>
