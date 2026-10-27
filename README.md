@@ -39,7 +39,7 @@ Visit counts are measured anonymously with [GoatCounter](https://www.goatcounter
 | `index.html` | The whole app: markup, styles and JavaScript in one file |
 | `sw.js` | Service worker for offline use |
 | `manifest.webmanifest` | Web app manifest (name, icons, colours) |
-| `icon-192.png`, `icon-512.png` | App icons |
+| `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` | App icons (bin with colour stripes for the four waste types) |
 | `og-image.png` | Preview image for link sharing (Open Graph) |
 | `robots.txt`, `sitemap.xml` | Search engine hints. **If you fork this project, change the URLs in these files and in the `canonical` and `og:` tags of `index.html`.** |
 
