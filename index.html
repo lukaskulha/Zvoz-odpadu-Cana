@@ -96,7 +96,7 @@ footer{margin-top:22px;font-size:13px;color:var(--mut)}footer a{color:var(--btn)
 <details open><summary><span>Čo sa neprijíma<small>Treba odviezť inam</small></span></summary><div class="zbody"><span class="zc bad">Komunálny odpad</span><span class="zc bad">Elektroodpad</span><span class="zc bad">Batérie a akumulátory</span><span class="zc bad">Pneumatiky</span><span class="zc bad">Lieky</span><span class="zc bad">Chemikálie, farby a lepidlá</span><span class="zc bad">Azbest a iný nebezpečný odpad</span><span class="zc bad">Kuchynský bioodpad</span><span class="zc bad">Odpad z podnikania</span></div></details>
 <p class="zfoot">Prevádzka od apríla 2026. Zdroj: prevádzkový poriadok zberného dvora, obec Čaňa. Vo sviatky poriadok hodiny neuvádza, overte na obecnom úrade. Telefón: +421 55 69 99 206.</p></div>
 </section>
-<footer><span id="fz">Termíny sú prepísané zo zvozového kalendára 2026 pre Čaňu (<a href="https://www.kosit.sk/wp-content/uploads/2025/12/Cana.pdf">PDF na kosit.sk</a>). Pri pochybnostiach platí oficiálny kalendár. Bezplatná linka KOSIT: 0800 156 748.<br></span>Návštevnosť sa meria anonymne cez GoatCounter, bez cookies a bez osobných údajov.<br>Verzia: v16</footer>
+<footer><span id="fz">Termíny sú prepísané zo zvozového kalendára 2026 pre Čaňu (<a href="https://www.kosit.sk/wp-content/uploads/2025/12/Cana.pdf">PDF na kosit.sk</a>). Pri pochybnostiach platí oficiálny kalendár. Bezplatná linka KOSIT: 0800 156 748.<br></span>Návštevnosť sa meria anonymne cez GoatCounter, bez cookies a bez osobných údajov.<br>Verzia: v17</footer>
 </main>
 <script>
 const D={K:{1:[1,15,29],2:[12,26],3:[12,26],4:[9,23],5:[7,21],6:[4,18],7:[2,16,30],8:[13,27],9:[10,24],10:[8,22],11:[5,19],12:[3,17]},
@@ -202,7 +202,8 @@ setTheme(document.documentElement.dataset.theme||"auto",false);
 setK(kdv);renderNext();render();drawOpts();initZd();drawZl();setView(location.hash=="#zberny-dvor"?"zd":"zv",false);sched();
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)refresh()});
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
-</script><script data-goatcounter="https://lukaskulha.goatcounter.com/count"
+</script><script>window.goatcounter={path:function(p){return(p||location.pathname).split("?")[0].split("#")[0]||"/"}};</script>
+<script data-goatcounter="https://lukaskulha.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
 <script>
@@ -210,6 +211,6 @@ if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(
 (function(){var back=false;try{back=!!localStorage.getItem("zvoz_seen");localStorage.setItem("zvoz_seen","1")}catch(e){}
 var n=0;(function send(){if(window.goatcounter&&window.goatcounter.count){window.goatcounter.count({path:back?"vracajuci-sa":"novy",title:back?"Vracajúci sa návštevník":"Nový návštevník",event:true})}else if(n++<30){setTimeout(send,500)}})();
 /* Poistka: ak GoatCounter na stránke nie je (napr. nie je vložený cez Netlify), načíta sa tu */
-window.addEventListener("load",function(){setTimeout(function(){if(window.goatcounter)return;var s=document.createElement("script");s.async=true;s.src="//gc.zgo.at/count.js";s.setAttribute("data-goatcounter","https://lukaskulha.goatcounter.com/count");document.head.appendChild(s)},2500)})})();
+window.addEventListener("load",function(){setTimeout(function(){if(window.goatcounter&&window.goatcounter.count)return;var s=document.createElement("script");s.async=true;s.src="//gc.zgo.at/count.js";s.setAttribute("data-goatcounter","https://lukaskulha.goatcounter.com/count");document.head.appendChild(s)},2500)})})();
 </script>
 </body></html>
