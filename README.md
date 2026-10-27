@@ -40,6 +40,8 @@ Visit counts are measured anonymously with [GoatCounter](https://www.goatcounter
 | `sw.js` | Service worker for offline use |
 | `manifest.webmanifest` | Web app manifest (name, icons, colours) |
 | `icon-192.png`, `icon-512.png` | App icons |
+| `og-image.png` | Preview image for link sharing (Open Graph) |
+| `robots.txt`, `sitemap.xml` | Search engine hints. **If you fork this project, change the URLs in these files and in the `canonical` and `og:` tags of `index.html`.** |
 
 There is no build step and there are no dependencies.
 
