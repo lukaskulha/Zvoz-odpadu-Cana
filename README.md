@@ -19,7 +19,7 @@ A free, lightweight web app (PWA) with the 2026 waste collection calendar for th
 - A separate **Collection yard (Zberný dvor)** tab: live open/closed status, opening hours (Wednesday 13:00–18:00, Saturday 9:00–16:30), location with navigation and call buttons, what to bring, and what is and is not accepted. The tabs show a short status badge (next collection and its waste type, and whether the yard is open)
 - Light and dark theme: automatic (follows your phone) or chosen manually
 - Installable as an app on your home screen, works offline
-- Interface in Slovak
+- Interface in Slovak, Hungarian and English (flag menu next to the theme switch; Hungarian is picked automatically when the phone is set to Hungarian, the choice is remembered, and `?lang=hu` / `?lang=en` in the link opens a specific language)
 
 ## Install on your phone
 
@@ -40,6 +40,8 @@ Visit counts are measured anonymously with [GoatCounter](https://www.goatcounter
 | `sw.js` | Service worker for offline use |
 | `manifest.webmanifest` | Web app manifest (name, icons, colours) |
 | `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` | App icons (bin with colour stripes for the four waste types) |
+| `i18n.js` | All texts in Slovak, Hungarian and English |
+| `scripts/check-i18n.js`, `netlify.toml` | Translation check, run automatically by Netlify before each deploy |
 | `og-image.png` | Preview image for link sharing (Open Graph) |
 | `robots.txt`, `sitemap.xml` | Search engine hints. **If you fork this project, change the URLs in these files and in the `canonical` and `og:` tags of `index.html`.** |
 
@@ -66,6 +68,18 @@ Collection dates are defined in the `D` object at the top of the main script in 
 ## Updating the collection yard data
 
 Opening hours are the `ZH` object in the main script (keys are weekday numbers, 0 = Sunday, values are `[opens, closes]` in minutes after midnight). The address, phone number, fees and the lists of accepted and rejected waste are plain text in the `v-zd` section of `index.html`. Source: the operating rules of the Čaňa collection yard published by the municipality: https://www.obeccana.eu/samosprava/odpadove-hospodarstvo/zberny-dvor-1/. Public holidays are not specified in the rules, so the app does not account for them.
+
+## Translations
+
+All texts shown to users are in `i18n.js`, with Slovak (`sk`) as the reference and Hungarian (`hu`) and English (`en`) translations. `index.html` must not contain visible text directly: it uses `T("key")` in code and `data-i18n="key"` in markup.
+
+Run the check before you commit:
+
+```bash
+node scripts/check-i18n.js
+```
+
+It fails when a key is missing in any language, placeholders or list lengths differ, `index.html` uses an unknown key, or Slovak text appears directly in `index.html`. Netlify runs the same check before every deploy (`netlify.toml`), so an incomplete translation never goes live. To add a language, copy the `sk` block, translate it, add a plural rule in `I18N_PLURAL` and the language code and flag in `index.html`.
 
 ## Contributing
 
