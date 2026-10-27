@@ -65,6 +65,7 @@ footer{margin-top:22px;font-size:13px;color:var(--mut)}footer a{color:var(--btn)
 .tp.r{background:var(--red);color:var(--redt);border-color:var(--red)}.tp.y{background:var(--yel);color:#1b1f2a;border-color:var(--yel)}.tp.g{background:var(--S);color:var(--St);border-color:var(--S)}
 [hidden]{display:none!important}
 .zlink{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;margin-top:10px;padding:12px 14px;border:1px solid var(--bd2);border-radius:12px;background:var(--card);color:var(--tx);cursor:pointer;font:inherit;font-size:14px}.zlink b{font-weight:600}.zlink span{color:var(--mut);flex:1;min-width:0}.zlink::after{content:"›";font-size:22px;line-height:1;color:var(--mut)}
+.ptr{position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);left:50%;transform:translate(-50%,-70px);opacity:0;background:var(--card);color:var(--tx);border:1px solid var(--bd2);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:600;z-index:50;pointer-events:none;box-shadow:0 2px 10px rgba(0,0,0,.18);white-space:nowrap}.ptr.a{transition:transform .2s,opacity .2s}
 </style></head><body><main class="w">
 <noscript><div><p>Zvoz odpadu v obci Čaňa 2026 (KOSIT): komunálny odpad vo štvrtok alebo piatok, sklo, papier a plasty podľa zvozového kalendára. Pripomienky do kalendára a zberný dvor (streda 13:00–18:00, sobota 9:00–16:30). Na zobrazenie kalendára zapnite JavaScript.</p></div></noscript>
 
@@ -96,7 +97,7 @@ footer{margin-top:22px;font-size:13px;color:var(--mut)}footer a{color:var(--btn)
 <details open><summary><span>Čo sa neprijíma<small>Treba odviezť inam</small></span></summary><div class="zbody"><span class="zc bad">Komunálny odpad</span><span class="zc bad">Elektroodpad</span><span class="zc bad">Batérie a akumulátory</span><span class="zc bad">Pneumatiky</span><span class="zc bad">Lieky</span><span class="zc bad">Chemikálie, farby a lepidlá</span><span class="zc bad">Azbest a iný nebezpečný odpad</span><span class="zc bad">Kuchynský bioodpad</span><span class="zc bad">Odpad z podnikania</span></div></details>
 <p class="zfoot">Prevádzka od apríla 2026. Zdroj: prevádzkový poriadok zberného dvora, obec Čaňa. Vo sviatky poriadok hodiny neuvádza, overte na obecnom úrade. Telefón: +421 55 69 99 206.</p></div>
 </section>
-<footer><span id="fz">Termíny sú prepísané zo zvozového kalendára 2026 pre Čaňu (<a href="https://www.kosit.sk/wp-content/uploads/2025/12/Cana.pdf">PDF na kosit.sk</a>). Pri pochybnostiach platí oficiálny kalendár. Bezplatná linka KOSIT: 0800 156 748.<br></span>Návštevnosť sa meria anonymne cez GoatCounter, bez cookies a bez osobných údajov.<br>Verzia: v17</footer>
+<footer><span id="fz">Termíny sú prepísané zo zvozového kalendára 2026 pre Čaňu (<a href="https://www.kosit.sk/wp-content/uploads/2025/12/Cana.pdf">PDF na kosit.sk</a>). Pri pochybnostiach platí oficiálny kalendár. Bezplatná linka KOSIT: 0800 156 748.<br></span>Návštevnosť sa meria anonymne cez GoatCounter, bez cookies a bez osobných údajov.<br>Verzia: v18</footer>
 </main>
 <script>
 const D={K:{1:[1,15,29],2:[12,26],3:[12,26],4:[9,23],5:[7,21],6:[4,18],7:[2,16,30],8:[13,27],9:[10,24],10:[8,22],11:[5,19],12:[3,17]},
@@ -202,7 +203,21 @@ setTheme(document.documentElement.dataset.theme||"auto",false);
 setK(kdv);renderNext();render();drawOpts();initZd();drawZl();setView(location.hash=="#zberny-dvor"?"zd":"zv",false);sched();
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)refresh()});
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
-</script><script>window.goatcounter={path:function(p){return(p||location.pathname).split("?")[0].split("#")[0]||"/"}};</script>
+</script><script>
+(function(){var st=false;try{st=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}catch(e){}if(!st)return;
+var el=document.createElement("div");el.className="ptr";el.setAttribute("role","status");document.body.appendChild(el);
+var y0=null,d=0,T=80,busy=false;
+function pos(k,o){el.style.opacity=o;el.style.transform="translate(-50%,"+(k-70)+"px)"}
+function reset(){el.className="ptr a";pos(0,0)}
+function reload(){busy=true;el.className="ptr a";el.textContent="Obnovujem\u2026";pos(78,1);var done=false,go=function(){if(!done){done=true;location.reload()}};
+try{navigator.serviceWorker.getRegistration().then(function(r){return r&&r.update()}).catch(function(){}).then(go)}catch(e){go()}setTimeout(go,1500)}
+addEventListener("touchstart",function(e){if(busy)return;y0=(window.scrollY<=0&&e.touches.length==1)?e.touches[0].clientY:null;d=0;el.className="ptr"},{passive:true});
+addEventListener("touchmove",function(e){if(y0===null||busy)return;d=e.touches[0].clientY-y0;if(d>12){var k=Math.min(d*.6,T*1.2);el.textContent=d>=T?"Pustite pre obnovenie":"Potiahnite pre obnovenie";pos(k,Math.min(1,d/50))}else pos(0,0)},{passive:true});
+addEventListener("touchend",function(){if(y0===null||busy)return;var ok=d>=T;y0=null;if(ok)reload();else reset()},{passive:true});
+addEventListener("touchcancel",function(){y0=null;if(!busy)reset()},{passive:true});
+})();
+</script>
+<script>window.goatcounter={path:function(p){return(p||location.pathname).split("?")[0].split("#")[0]||"/"}};</script>
 <script data-goatcounter="https://lukaskulha.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
