@@ -17,7 +17,7 @@ A free, lightweight web app (PWA) with the 2026 waste collection calendar for th
   - on collection day: 6:00, 7:00 or 10:00
 - A guide to what belongs in each bin and what does not
 - A separate **Collection yard (Zberný dvor)** tab: live open/closed status, opening hours (Wednesday 13:00–18:00, Saturday 9:00–16:30), location with navigation and call buttons, what to bring, and what is and is not accepted. The tabs show a short status badge (next collection and its waste type, and whether the yard is open)
-- Light and dark theme: automatic (follows your phone) or chosen manually
+- Light and dark theme: automatic (follows your phone) or chosen manually, plus three colour themes (blue, lavender, teal) under the palette button
 - Installable as an app on your home screen, works offline
 - Interface in Slovak, Hungarian and English (flag menu next to the theme switch; Hungarian is picked automatically when the phone is set to Hungarian, the choice is remembered, and `?lang=hu` / `?lang=en` in the link opens a specific language)
 
