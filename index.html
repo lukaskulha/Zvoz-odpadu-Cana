@@ -106,7 +106,7 @@ footer{margin-top:22px;font-size:13px;color:var(--mut)}footer a{color:var(--btn)
 @media (max-width:369px){.hc .th button{padding:6px 5px}.hc .th{padding:2px}}
 .pop{position:absolute;right:0;top:calc(100% + 6px);max-width:calc(100vw - 32px);background:var(--card);border:1px solid var(--bd2);border-radius:12px;padding:6px;z-index:40;box-shadow:0 8px 24px rgba(0,0,0,.18);min-width:230px}
 .hbtn{display:flex;align-items:center;gap:6px;padding:5px 9px 5px 7px;font-weight:500;border-radius:10px;background:var(--in);border:1px solid transparent;color:var(--tx);font:inherit;font-size:13px;cursor:pointer;line-height:1}.hbtn[aria-expanded="true"]{background:var(--card);border-color:var(--bd2)}
-.sw{display:block;flex:none;border-radius:6px;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
+.psw{display:block;flex:none;border-radius:6px;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
 .popt{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;color:var(--tx);font:inherit;font-size:15px;padding:9px 8px;border-radius:8px;text-align:left;cursor:pointer}.popt:hover{background:var(--in)}.popt[aria-checked="true"]{font-weight:600}.popt small{display:block;font-size:12px;font-weight:400;color:var(--mut)}.popt .ck{margin-left:auto;color:var(--btn)}
 .pcap{font-size:12px;color:var(--mut);margin:6px 8px 6px;text-transform:uppercase;letter-spacing:.06em}
 
@@ -148,7 +148,7 @@ footer{margin-top:22px;font-size:13px;color:var(--mut)}footer a{color:var(--btn)
 </main>
 <script src="i18n.js"></script>
 <script>
-const APP_VERSION="v23";
+const APP_VERSION="v24";
 const D={K:{1:[1,15,29],2:[12,26],3:[12,26],4:[9,23],5:[7,21],6:[4,18],7:[2,16,30],8:[13,27],9:[10,24],10:[8,22],11:[5,19],12:[3,17]},
 S:{1:[3],3:[7],5:[2],7:[4],9:[5],11:[7]},
 P:{1:[17],2:[14],3:[14],4:[18],5:[16],6:[13],7:[18],8:[15],9:[19],10:[17],11:[21],12:[19]},
@@ -306,7 +306,7 @@ const PALS=["blue","lavender","teal"];
 const PSW={blue:["#f5f6f8","#2f5fd0","#14161c","#6b93f2"],lavender:["#f6f4fa","#6a4cc2","#15131c","#a993f2"],teal:["#f0f5f5","#0b7480","#0e1618","#4cc2c8"]};
 const PALICON='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c1.2 0 1.9-1 1.5-2l-.3-.9c-.5-1.4.6-2.8 2.1-2.8H17a4 4 0 0 0 4-4c0-4.6-4-8.3-9-8.3z"/><circle cx="7.5" cy="11.5" r="1.4" style="fill:var(--K);stroke:none"/><circle cx="9.5" cy="7.3" r="1.4" style="fill:var(--S);stroke:none"/><circle cx="14" cy="6.6" r="1.4" style="fill:var(--btn);stroke:none"/><circle cx="17.3" cy="9.8" r="1.4" style="fill:var(--L);stroke:none"/></svg>';
 let pal="blue";try{const p=localStorage.getItem("palette");if(PALS.includes(p))pal=p}catch(e){}
-function swatch(p){const c=PSW[p];return '<svg class="sw" width="30" height="20" viewBox="0 0 30 20" aria-hidden="true"><rect width="15" height="20" fill="'+c[0]+'"/><rect x="15" width="15" height="20" fill="'+c[2]+'"/><circle cx="7.5" cy="10" r="4.5" fill="'+c[1]+'"/><circle cx="22.5" cy="10" r="4.5" fill="'+c[3]+'"/></svg>'}
+function swatch(p){const c=PSW[p];return '<svg class="psw" width="30" height="20" viewBox="0 0 30 20" aria-hidden="true"><rect width="15" height="20" fill="'+c[0]+'"/><rect x="15" width="15" height="20" fill="'+c[2]+'"/><circle cx="7.5" cy="10" r="4.5" fill="'+c[1]+'"/><circle cx="22.5" cy="10" r="4.5" fill="'+c[3]+'"/></svg>'}
 function drawPal(){$("pbs").innerHTML=PALICON;
 $("pmo").innerHTML=PALS.map(p=>'<button type="button" class="popt" role="radio" data-p="'+p+'" aria-checked="'+(p==pal)+'">'+swatch(p)+'<span>'+T("palette_"+p)+(p=="blue"?'<small>'+T("palette_orig")+'</small>':'')+'</span>'+(p==pal?ic(CHECK,18).replace("<svg",'<svg class="ck"'):"")+'</button>').join("")}
 function setPal(p){pal=p;const r=document.documentElement;if(p=="blue")delete r.dataset.palette;else r.dataset.palette=p;
